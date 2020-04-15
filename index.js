@@ -21,7 +21,7 @@ app.get("/callback", (req, res) => {
     res.send(fs.readFileSync("callback.html", "utf8"))
 })
 app.get("/submittoken", (req, res) => {
-    res.send("You can close this page now")
+    res.send("You can close this page now <script>setTimeout(function(){close()},5000)<\script>")
     term("Got Access Token\n")
     var full_token = "Bearer " + req.query.access_token
     term.white("Subreddit you want to broadcast to: ").inputField(
