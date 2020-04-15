@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        /*const token = /#access_token=([^]*)\&token/.exec(window.location.href)[1];
+        window.location.href = window.location.origin + ` / submittoken ? token = $ {
+            token
+        }
+        `;*/
+        window.location.href = "http://localhost:65010/submittoken" + window.location.hash.replace(/#/gi, "?")
+    </script>
+</head>
+
+<body>
+    <h1>Wait one second...</h1>
+</body>
+
+</html>
