@@ -21,7 +21,7 @@ app.get("/callback", (req, res) => {
     res.send(fs.readFileSync("callback.html", "utf8"))
 })
 app.get("/submittoken", (req, res) => {
-    res.send("You can close this page now <script>setTimeout(function(){close()},5000)<\script>")
+    res.send("<script>setTimeout(function(){close()},5000)</script> You can close this page now")
     term("Got Access Token\n")
     var full_token = "Bearer " + req.query.access_token
     term.white("Subreddit you want to broadcast to: ").inputField(
@@ -42,7 +42,8 @@ app.get("/submittoken", (req, res) => {
                         console.log("Response From Reddit")
                         if (response.statusCode == 200) {
                             var data = JSON.parse(body)
-                            console.log("YOUR STREAMER KEY: " + data.data.streamer_key)
+                            console.log("STREAM URL: rtmp://ingest.redd.it/inbound/")
+                            console.log("\nSTREAM KEY: " + data.data.streamer_key)
                             console.log("\nYOU ARE LIVE: " + data.data.post.outboundLink.url)
                             process.exit(0)
                         } else {
